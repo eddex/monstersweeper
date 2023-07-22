@@ -1,0 +1,161 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/fonts/Redkost Comic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/kenney_jam_logo.png" type="Texture" id=2]
+[ext_resource path="res://assets/kenney-ui-pack/green_button00.png" type="Texture" id=3]
+[ext_resource path="res://resources/ButtonTextDynamicFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/titlescreen/StartButton.gd" type="Script" id=5]
+[ext_resource path="res://assets/kenney-ui-pack/green_button01.png" type="Texture" id=6]
+[ext_resource path="res://assets/kenney-ui-pack/red_button12.png" type="Texture" id=7]
+[ext_resource path="res://assets/kenney-ui-pack/red_button11.png" type="Texture" id=8]
+[ext_resource path="res://assets/kenney-ui-pack/yellow_button01.png" type="Texture" id=9]
+[ext_resource path="res://assets/kenney-ui-pack/yellow_button00.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/kenvector_future.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://scenes/titlescreen/HighScore.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 94
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 530, 200 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 11 )
+
+[node name="Titlescreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="."]
+anchor_top = 0.339
+anchor_right = 1.0
+anchor_bottom = 0.339
+custom_fonts/font = SubResource( 1 )
+text = "Monstersweeper"
+align = 1
+
+[node name="Subtitle" type="Label" parent="."]
+anchor_top = 0.486
+anchor_right = 1.0
+anchor_bottom = 0.486
+custom_fonts/font = SubResource( 2 )
+text = "made by eddex"
+align = 1
+
+[node name="Logo" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.017
+margin_left = -265.0
+margin_right = 265.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="StartButtonEasy" type="TextureButton" parent="."]
+anchor_left = 0.27
+anchor_top = 0.693
+anchor_right = 0.27
+anchor_bottom = 0.693
+margin_left = -95.0
+margin_top = -24.5
+margin_right = 95.0
+margin_bottom = 24.5
+rect_pivot_offset = Vector2( 95, 25 )
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 6 )
+script = ExtResource( 5 )
+
+[node name="StartButtonText" type="Label" parent="StartButtonEasy"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -24.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = " EASY"
+align = 1
+valign = 1
+
+[node name="StartButtonMedium" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.693
+anchor_right = 0.5
+anchor_bottom = 0.693
+margin_left = -95.0
+margin_top = -24.5
+margin_right = 95.0
+margin_bottom = 24.5
+rect_pivot_offset = Vector2( 95, 25 )
+texture_normal = ExtResource( 10 )
+texture_focused = ExtResource( 9 )
+script = ExtResource( 5 )
+
+[node name="StartButtonText" type="Label" parent="StartButtonMedium"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -24.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = " NORMAL"
+align = 1
+valign = 1
+
+[node name="StartButtonHard" type="TextureButton" parent="."]
+anchor_left = 0.73
+anchor_top = 0.693
+anchor_right = 0.73
+anchor_bottom = 0.693
+margin_left = -95.0
+margin_top = -24.5
+margin_right = 95.0
+margin_bottom = 24.5
+rect_pivot_offset = Vector2( 95, 25 )
+texture_normal = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
+script = ExtResource( 5 )
+
+[node name="StartButtonText" type="Label" parent="StartButtonHard"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -24.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = " HARD"
+align = 1
+valign = 1
+
+[node name="HighScore" type="Label" parent="."]
+anchor_top = 0.83
+anchor_right = 1.0
+anchor_bottom = 0.83
+margin_top = -13.5
+margin_bottom = 13.5
+custom_fonts/font = SubResource( 4 )
+text = "High score: 0"
+align = 1
+valign = 1
+script = ExtResource( 12 )
+
+[connection signal="mouse_entered" from="StartButtonEasy" to="StartButtonEasy" method="_on_StartButton_mouse_entered"]
+[connection signal="mouse_exited" from="StartButtonEasy" to="StartButtonEasy" method="_on_StartButton_mouse_exited"]
+[connection signal="pressed" from="StartButtonEasy" to="StartButtonEasy" method="_on_StartButtonEasy_pressed"]
+[connection signal="mouse_entered" from="StartButtonMedium" to="StartButtonMedium" method="_on_StartButton_mouse_entered"]
+[connection signal="mouse_exited" from="StartButtonMedium" to="StartButtonMedium" method="_on_StartButton_mouse_exited"]
+[connection signal="pressed" from="StartButtonMedium" to="StartButtonMedium" method="_on_StartButtonMedium_pressed"]
+[connection signal="mouse_entered" from="StartButtonHard" to="StartButtonHard" method="_on_StartButton_mouse_entered"]
+[connection signal="mouse_exited" from="StartButtonHard" to="StartButtonHard" method="_on_StartButton_mouse_exited"]
+[connection signal="pressed" from="StartButtonHard" to="StartButtonHard" method="_on_StartButtonHard_pressed"]
