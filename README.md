@@ -2,6 +2,8 @@
 
 A simple game inspired by Minesweeper. Created for the [Kenney Jam 2023](https://itch.io/jam/kenney-jam-2023).
 
+Play it here: https://eddex.itch.io/monstersweeper
+
 ## Attributions 🙏
 
 **Game assets**:
