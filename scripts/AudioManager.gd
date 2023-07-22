@@ -5,6 +5,8 @@ var button_hover_stream = preload("res://assets/kenney-interface-sounds/simple-p
 
 var volume_db = -20
 
+var sound_on: bool = true
+
 var music_audio_player: AudioStreamPlayer
 var button_hover_audio_player: AudioStreamPlayer
 
@@ -24,5 +26,12 @@ func _ready():
 	
 	
 func play_button_hover_sound():
-	print("play button hover sound")
 	button_hover_audio_player.play()
+
+
+func toggle_sound_on_off():
+	sound_on = !sound_on
+	if sound_on:
+		music_audio_player.play()
+	else:
+		music_audio_player.stop()
