@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/TileMapOffset.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/game/EndScreen.gd" type="Script" id=15]
 [ext_resource path="res://assets/kenney-ui-pack/red_boxCheckmark.png" type="Texture" id=16]
 [ext_resource path="res://scenes/game/MusicToggle.gd" type="Script" id=17]
+[ext_resource path="res://scenes/game/Tutorial.gd" type="Script" id=18]
 
 [sub_resource type="Animation" id=4]
 resource_name = "FadeOut"
@@ -154,16 +155,63 @@ margin_top = -18.0
 margin_bottom = 18.0
 texture_normal = ExtResource( 16 )
 
-[node name="Tutorial" type="Label" parent="GameUI"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -27.0
-margin_right = 442.0
-margin_bottom = 10.0
+[node name="Tutorial" type="Panel" parent="GameUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -352.5
+margin_top = -227.5
+margin_right = 352.5
+margin_bottom = 227.5
+script = ExtResource( 18 )
+
+[node name="Tutorial" type="Label" parent="GameUI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.436
+anchor_right = 0.5
+anchor_bottom = 0.436
+margin_left = -352.5
+margin_top = -178.5
+margin_right = 352.5
+margin_bottom = 178.5
 custom_fonts/font = ExtResource( 12 )
-text = "Move: WASD, Harvest: Mouse, zoom: mouse wheel"
+text = "The numbers above harvested fields
+tell you how many monsters
+are hidden around that field
+
+Harvest crops: 
+left Mouse button
+
+Move camera:
+W,A,s,d or arrow keys
+
+Zoom: 
+mouse wheel"
 align = 1
+
+[node name="CloseTutorialButton" type="TextureButton" parent="GameUI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.972
+anchor_right = 0.5
+anchor_bottom = 0.972
+margin_left = -95.0
+margin_top = -49.0
+margin_right = 95.0
+rect_pivot_offset = Vector2( 95, 25 )
+texture_normal = ExtResource( 7 )
+
+[node name="CloseTutorial" type="Label" parent="GameUI/Tutorial/CloseTutorialButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.5
+margin_top = -19.5
+margin_right = 75.5
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 8 )
+text = " Close"
 
 [node name="EndScreen" type="CanvasLayer" parent="."]
 script = ExtResource( 15 )
@@ -270,6 +318,9 @@ texture = ExtResource( 14 )
 script = SubResource( 6 )
 
 [connection signal="pressed" from="GameUI/MusicToggle/SoundSettingButton" to="GameUI/MusicToggle" method="_on_SoundSettingButton_pressed"]
+[connection signal="mouse_entered" from="GameUI/Tutorial/CloseTutorialButton" to="GameUI/Tutorial" method="_on_CloseTutorialButton_mouse_entered"]
+[connection signal="mouse_exited" from="GameUI/Tutorial/CloseTutorialButton" to="GameUI/Tutorial" method="_on_CloseTutorialButton_mouse_exited"]
+[connection signal="pressed" from="GameUI/Tutorial/CloseTutorialButton" to="GameUI/Tutorial" method="_on_CloseTutorialButton_pressed"]
 [connection signal="mouse_entered" from="EndScreen/EndScreen/PlayAgainButton" to="EndScreen/EndScreen/PlayAgainButton" method="_on_PlayAgainButton_mouse_entered"]
 [connection signal="mouse_exited" from="EndScreen/EndScreen/PlayAgainButton" to="EndScreen/EndScreen/PlayAgainButton" method="_on_PlayAgainButton_mouse_exited"]
 [connection signal="pressed" from="EndScreen/EndScreen/PlayAgainButton" to="EndScreen/EndScreen/PlayAgainButton" method="_on_PlayAgainButton_pressed"]
