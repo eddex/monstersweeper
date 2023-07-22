@@ -44,9 +44,11 @@ func _tile_clicked(cell_pos: Vector2, area: Area2D):
 	$PlantsTileMap.set_cellv(cell_pos, current_cell_tile+3)
 	if corn_cell_states[cell_pos]:
 		print("--- GAME OVER ---")
+		AudioManager.play_monster_sound()
 		$EndScreen.end_game(score, score == GameState.high_score, false)
 	else:
 		print("Cell harvested")
+		AudioManager.play_harvest_sound()
 		_increase_score()
 		_handle_win()
 		var neighbor_cells = [
